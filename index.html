@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="elm.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      Elm.fullscreen(Elm.Main, {})
-  });
-</script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+  <script src="elm.js"></script>
+  <script src="/_reactor/debug.js"></script>
 </head>
 <body>
-<div id="elm"></div>
 </body>
+<script>
+Elm.fullscreenDebug("Demo", "main.elm")
+</script>
 </html>
 

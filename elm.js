@@ -4210,14 +4210,16 @@ Elm.Main.make = function (_elm) {
       _L.fromArray([]),
       _L.fromArray([A2($Html.button,
                    _L.fromArray([A2($Html$Events.onClick,
-                   address,
-                   Decrement)]),
-                   _L.fromArray([$Html.text("-")]))
+                                address,
+                                Decrement)
+                                ,$Html$Attributes.$class("btn btn-primary")]),
+                   _L.fromArray([$Html.text("Prev")]))
                    ,A2($Html.button,
                    _L.fromArray([A2($Html$Events.onClick,
-                   address,
-                   Increment)]),
-                   _L.fromArray([$Html.text("+")]))
+                                address,
+                                Increment)
+                                ,$Html$Attributes.$class("btn btn-primary")]),
+                   _L.fromArray([$Html.text("Next")]))
                    ,$Html.text($Basics.toString(model))
                    ,A2($Html.div,
                    _L.fromArray([]),

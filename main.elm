@@ -1,6 +1,8 @@
+module Demo (main) where
+
 import StartApp.Simple as StartApp
 import Html exposing (Html, div, button, text, img)
-import Html.Attributes exposing (src)
+import Html.Attributes exposing (src, class)
 import Html.Events exposing (onClick)
 import Maybe
 
@@ -20,8 +22,8 @@ pageCount = List.length pageImages
 view address model =
   div []
     [ 
-      button [ onClick address Decrement ] [ text "-" ]
-    , button [ onClick address Increment ] [ text "+" ]
+      button [ onClick address Decrement, class "btn btn-danger"] [ text "Prev" ]
+    , button [ onClick address Increment, class "btn btn-primary"] [ text "Next" ]
     , text (toString model)
     , div [] [
         Maybe.withDefault (text "hello") (List.head <| List.drop model pageImages)
