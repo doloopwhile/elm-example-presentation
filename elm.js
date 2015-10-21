@@ -833,18 +833,174 @@ Elm.Demo.make = function (_elm) {
    $StartApp$Simple = Elm.StartApp.Simple.make(_elm);
    var Decrement = {ctor: "Decrement"};
    var Increment = {ctor: "Increment"};
-   var pageImages = A2($List.map,
-   function (x) {
-      return A2($Html.img,
-      _L.fromArray([$Html$Attributes.src(A2($Basics._op["++"],
-      "p-",
-      A2($Basics._op["++"],
-      $Basics.toString(x),
-      ".jpg")))]),
-      _L.fromArray([]));
-   },
-   _L.range(0,12));
-   var pageCount = $List.length(pageImages);
+   var pages = _L.fromArray([A2($Html.img,
+                            _L.fromArray([$Html$Attributes.src("p-0.jpg")]),
+                            _L.fromArray([]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("AngularJSは難しい！")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("3種類の言語(JS/HTML/CSS)")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("CRUDアプリに特化している！")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("ngXXXが多すぎる！")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("時代は関数型・静的型付け！")]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("そこでElm！")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("AltJSの一種")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("1ソースからJS/HTML/CSSを生成")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("FRP(Functional Reactive Programing)！")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("Haskellベースの関数型言語")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([$Html$Attributes.$class("text-danger")]),
+                                         _L.fromArray([$Html.text("まだVer.0.x")]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("表示を直接操作できる独自ライブラリ")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([A2($Html.a,
+                                         _L.fromArray([$Html$Attributes.href("http://postd.cc/css-is-unnecessary/")]),
+                                         _L.fromArray([$Html.text("c.f. 抽象化と組み合わせができるレイアウト言語があれば、CSSは必要ない")]))]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("現実主義的なelm-html")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([$Html$Attributes.$class("text-danger")]),
+                                         _L.fromArray([$Html.text("Blazing fastらしい")]))
+                                         ,A2($Html.pre,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text(A2($Basics._op["++"],
+                                         "div [] [\n",
+                                         A2($Basics._op["++"],
+                                         "  h1 [] [text \"AngularJSは難しい！\"]\n",
+                                         A2($Basics._op["++"],
+                                         "  , p [] [text \"3種類の言語(JS/HTML/CSS)\"]\n",
+                                         A2($Basics._op["++"],
+                                         "  , p [] [text \"CRUDアプリに特化している！\"]\n",
+                                         A2($Basics._op["++"],
+                                         "  , p [] [text \"ngXXXが多すぎる！\"]\n",
+                                         A2($Basics._op["++"],
+                                         "  , p [] [text \"時代は関数型・静的型付け！\"]\n",
+                                         "  ]\n")))))))]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("FRP")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([$Html$Attributes.$class("text-primary")]),
+                                         _L.fromArray([$Html.text("ngXXXの一般化")]))
+                                         ,A2($Html.pre,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text(A2($Basics._op["++"],
+                                         "main =\n",
+                                         A2($Basics._op["++"],
+                                         "  renderScene\n",
+                                         A2($Basics._op["++"],
+                                         "  <~imageAPIResp\n",
+                                         A2($Basics._op["++"],
+                                         "  ~ Mouse.position\n",
+                                         A2($Basics._op["++"],
+                                         "  ~ Window.width\n",
+                                         A2($Basics._op["++"],
+                                         "  ~ pagingAPIResp\n",
+                                         "  ~ (fps 30)")))))))]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([$Html$Attributes.$class("")]),
+                                         _L.fromArray([$Html.text("更新ロジック不要・コールバック地獄にオサラバ")]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([$Html$Attributes.style(_L.fromArray([{ctor: "_Tuple2"
+                                                                               ,_0: "font-size"
+                                                                               ,_1: "64px"}]))]),
+                            _L.fromArray([A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("elm-logo.png")
+                                                      ,$Html$Attributes.height(100)]),
+                                         _L.fromArray([]))
+                                         ,$Html.text("　V.S.　")
+                                         ,A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("angularjs-logo.png")
+                                                      ,$Html$Attributes.height(100)]),
+                                         _L.fromArray([]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([$Html$Attributes.style(_L.fromArray([{ctor: "_Tuple2"
+                                                                               ,_0: "font-size"
+                                                                               ,_1: "64px"}]))]),
+                            _L.fromArray([A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("elm-logo.png")
+                                                      ,$Html$Attributes.height(100)]),
+                                         _L.fromArray([]))
+                                         ,$Html.text("　〜　")
+                                         ,A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("haskell-logo.png")
+                                                      ,$Html$Attributes.height(100)]),
+                                         _L.fromArray([]))]))
+                            ,A2($Html.img,
+                            _L.fromArray([$Html$Attributes.src("neck-pinch.jpg")
+                                         ,$Html$Attributes.width(400)]),
+                            _L.fromArray([]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([$Html$Attributes.$class("text-danger")]),
+                                         _L.fromArray([$Html.text("まだ Ver.0.x")]))
+                                         ,A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("elm-advent-calendar-2014.png")
+                                                      ,$Html$Attributes.width(400)]),
+                                         _L.fromArray([]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.h1,
+                                         _L.fromArray([$Html$Attributes.$class("text-danger")]),
+                                         _L.fromArray([$Html.text("Elmはやさしい")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("インタラクティブシェルが充実")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("目に見える物を作れる")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("改良された文法（モナドもない）")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([]),
+                                         _L.fromArray([$Html.text("")]))
+                                         ,A2($Html.p,
+                                         _L.fromArray([$Html$Attributes.$class("text-primary")]),
+                                         _L.fromArray([$Html.text("関数型言語・FRPなどの入門に最適？")]))]))
+                            ,A2($Html.div,
+                            _L.fromArray([]),
+                            _L.fromArray([A2($Html.img,
+                                         _L.fromArray([$Html$Attributes.src("spock.jpg")
+                                                      ,$Html$Attributes.height(300)]),
+                                         _L.fromArray([]))
+                                         ,A2($Html.h1,
+                                         _L.fromArray([$Html$Attributes.$class("text-danger")]),
+                                         _L.fromArray([$Html.text("皆さまの長寿と繁栄を")]))]))]);
+   var pageCount = $List.length(pages);
    var update = F2(function (action,
    model) {
       return function () {
@@ -858,7 +1014,7 @@ Elm.Demo.make = function (_elm) {
               pageCount - 1,
               model + 1);}
          _U.badCase($moduleName,
-         "between lines 38 and 40");
+         "between lines 115 and 117");
       }();
    });
    var view = F2(function (address,
@@ -881,11 +1037,18 @@ Elm.Demo.make = function (_elm) {
                    ,A2($Html.div,
                    _L.fromArray([]),
                    _L.fromArray([A2($Maybe.withDefault,
-                   $Html.text("hello"),
+                   $Html.text("end"),
                    $List.head(A2($List.drop,
                    model,
-                   pageImages)))]))]));
+                   pages)))]))]));
    });
+   var embdPage = function (url) {
+      return A2($Html.iframe,
+      _L.fromArray([$Html$Attributes.src(url)
+                   ,$Html$Attributes.width(600)
+                   ,$Html$Attributes.height(500)]),
+      _L.fromArray([]));
+   };
    var model = 0;
    var main = $StartApp$Simple.start({_: {}
                                      ,model: model
@@ -894,7 +1057,8 @@ Elm.Demo.make = function (_elm) {
    _elm.Demo.values = {_op: _op
                       ,main: main
                       ,model: model
-                      ,pageImages: pageImages
+                      ,embdPage: embdPage
+                      ,pages: pages
                       ,pageCount: pageCount
                       ,view: view
                       ,Increment: Increment
@@ -10426,12 +10590,9 @@ Elm.Native.Utils.make = function(localRuntime) {
 	};
 };
 
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var createElement = require("./vdom/create-element.js")
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
-module.exports = createElement
-
-},{"./vdom/create-element.js":6}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -10449,8 +10610,8 @@ if (typeof document !== 'undefined') {
     module.exports = doccy;
 }
 
-}).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":24}],3:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"min-document":1}],3:[function(require,module,exports){
 "use strict";
 
 module.exports = function isObject(x) {
@@ -11640,7 +11801,7 @@ var VNode = require('virtual-dom/vnode/vnode');
 var VText = require('virtual-dom/vnode/vtext');
 var diff = require('virtual-dom/vtree/diff');
 var patch = require('virtual-dom/vdom/patch');
-var createElement = require('virtual-dom/create-element');
+var createElement = require('virtual-dom/vdom/create-element');
 var isHook = require("virtual-dom/vnode/is-vhook");
 
 
@@ -11662,24 +11823,14 @@ Elm.Native.VirtualDom.make = function(elm)
 
 	var ATTRIBUTE_KEY = 'UniqueNameThatOthersAreVeryUnlikelyToUse';
 
-	function listToProperties(list)
+
+
+	// VIRTUAL DOM NODES
+
+
+	function text(string)
 	{
-		var object = {};
-		while (list.ctor !== '[]')
-		{
-			var entry = list._0;
-			if (entry.key === ATTRIBUTE_KEY)
-			{
-				object.attributes = object.attributes || {};
-				object.attributes[entry.value.attrKey] = entry.value.attrValue;
-			}
-			else
-			{
-				object[entry.key] = entry.value;
-			}
-			list = list._1;
-		}
-		return object;
+		return new VText(string);
 	}
 
 	function node(name)
@@ -11688,6 +11839,10 @@ Elm.Native.VirtualDom.make = function(elm)
 			return makeNode(name, propertyList, contents);
 		});
 	}
+
+
+	// BUILD VIRTUAL DOME NODES
+
 
 	function makeNode(name, propertyList, contents)
 	{
@@ -11710,7 +11865,7 @@ Elm.Native.VirtualDom.make = function(elm)
 
 		// ensure that setting text of an input does not move the cursor
 		var useSoftSet =
-			name === 'input'
+			(name === 'input' || name === 'textarea')
 			&& props.value !== undefined
 			&& !isHook(props.value);
 
@@ -11721,6 +11876,31 @@ Elm.Native.VirtualDom.make = function(elm)
 
 		return new VNode(name, props, List.toArray(contents), key, namespace);
 	}
+
+	function listToProperties(list)
+	{
+		var object = {};
+		while (list.ctor !== '[]')
+		{
+			var entry = list._0;
+			if (entry.key === ATTRIBUTE_KEY)
+			{
+				object.attributes = object.attributes || {};
+				object.attributes[entry.value.attrKey] = entry.value.attrValue;
+			}
+			else
+			{
+				object[entry.key] = entry.value;
+			}
+			list = list._1;
+		}
+		return object;
+	}
+
+
+
+	// PROPERTIES AND ATTRIBUTES
+
 
 	function property(key, value)
 	{
@@ -11740,6 +11920,63 @@ Elm.Native.VirtualDom.make = function(elm)
 			}
 		};
 	}
+
+
+
+	// NAMESPACED ATTRIBUTES
+
+
+	function attributeNS(namespace, key, value)
+	{
+		return {
+			key: key,
+			value: new AttributeHook(namespace, key, value)
+		};
+	}
+
+	function AttributeHook(namespace, key, value)
+	{
+		if (!(this instanceof AttributeHook))
+		{
+			return new AttributeHook(namespace, key, value);
+		}
+
+		this.namespace = namespace;
+		this.key = key;
+		this.value = value;
+	}
+
+	AttributeHook.prototype.hook = function (node, prop, prev)
+	{
+		if (prev
+			&& prev.type === 'AttributeHook'
+			&& prev.value === this.value
+			&& prev.namespace === this.namespace)
+		{
+			return;
+		}
+
+		node.setAttributeNS(this.namespace, prop, this.value);
+	};
+
+	AttributeHook.prototype.unhook = function (node, prop, next)
+	{
+		if (next
+			&& next.type === 'AttributeHook'
+			&& next.namespace === this.namespace)
+		{
+			return;
+		}
+
+		node.removeAttributeNS(this.namespace, this.key);
+	};
+
+	AttributeHook.prototype.type = 'AttributeHook';
+
+
+
+	// EVENTS
+
 
 	function on(name, options, decoder, createMessage)
 	{
@@ -11780,10 +12017,10 @@ Elm.Native.VirtualDom.make = function(elm)
 		}
 	};
 
-	function text(string)
-	{
-		return new VText(string);
-	}
+
+
+	// INTEGRATION WITH ELEMENTS
+
 
 	function ElementWidget(element)
 	{
@@ -11818,6 +12055,11 @@ Elm.Native.VirtualDom.make = function(elm)
 		});
 	}
 
+
+
+	// RENDER AND UPDATE
+
+
 	function render(model)
 	{
 		var element = Element.createNode('div');
@@ -11837,6 +12079,11 @@ Elm.Native.VirtualDom.make = function(elm)
 		var newNode = patch(node, patches);
 		return newNode;
 	}
+
+
+
+	// LAZINESS
+
 
 	function lazyRef(fn, a)
 	{
@@ -11867,15 +12114,17 @@ Elm.Native.VirtualDom.make = function(elm)
 
 	function Thunk(fn, args, thunk)
 	{
-		this.fn = fn;
-		this.args = args;
+		/* public (used by VirtualDom.js) */
 		this.vnode = null;
 		this.key = undefined;
+
+		/* private */
+		this.fn = fn;
+		this.args = args;
 		this.thunk = thunk;
 	}
 
 	Thunk.prototype.type = "Thunk";
-	Thunk.prototype.update = updateThunk;
 	Thunk.prototype.render = renderThunk;
 
 	function shouldUpdate(current, previous)
@@ -11900,35 +12149,27 @@ Elm.Native.VirtualDom.make = function(elm)
 		return false;
 	}
 
-	function updateThunk(previous, domNode)
+	function renderThunk(previous)
 	{
-		if (!shouldUpdate(this, previous))
+		if (previous == null || shouldUpdate(this, previous))
 		{
-			this.vnode = previous.vnode;
-			return;
+			return this.thunk();
 		}
-
-		if (!this.vnode)
+		else
 		{
-			this.vnode = this.thunk();
+			return previous.vnode;
 		}
-
-		var patches = diff(previous.vnode, this.vnode);
-		patch(domNode, patches);
 	}
 
-	function renderThunk()
-	{
-		return this.thunk();
-	}
 
-	return Elm.Native.VirtualDom.values = {
+	return elm.Native.VirtualDom.values = Elm.Native.VirtualDom.values = {
 		node: node,
 		text: text,
 		on: F4(on),
 
 		property: F2(property),
 		attribute: F2(attribute),
+		attributeNS: F3(attributeNS),
 
 		lazy: F2(lazyRef),
 		lazy2: F3(lazyRef2),
@@ -11942,9 +12183,7 @@ Elm.Native.VirtualDom.make = function(elm)
 	};
 };
 
-},{"virtual-dom/create-element":1,"virtual-dom/vdom/patch":9,"virtual-dom/vnode/is-vhook":13,"virtual-dom/vnode/vnode":18,"virtual-dom/vnode/vtext":20,"virtual-dom/vtree/diff":22}],24:[function(require,module,exports){
-
-},{}]},{},[23]);
+},{"virtual-dom/vdom/create-element":6,"virtual-dom/vdom/patch":9,"virtual-dom/vnode/is-vhook":13,"virtual-dom/vnode/vnode":18,"virtual-dom/vnode/vtext":20,"virtual-dom/vtree/diff":22}]},{},[23]);
 
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
@@ -12909,6 +13148,7 @@ Elm.VirtualDom.make = function (_elm) {
       decoder,
       toMessage);
    });
+   var attributeNS = $Native$VirtualDom.attributeNS;
    var attribute = $Native$VirtualDom.attribute;
    var property = $Native$VirtualDom.property;
    var Property = {ctor: "Property"};
@@ -12924,6 +13164,7 @@ Elm.VirtualDom.make = function (_elm) {
                             ,fromElement: fromElement
                             ,property: property
                             ,attribute: attribute
+                            ,attributeNS: attributeNS
                             ,on: on
                             ,onWithOptions: onWithOptions
                             ,defaultOptions: defaultOptions
