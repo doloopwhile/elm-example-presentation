@@ -811,6 +811,97 @@ Elm.Debug.make = function (_elm) {
                        ,trace: trace};
    return _elm.Debug.values;
 };
+Elm.Demo = Elm.Demo || {};
+Elm.Demo.make = function (_elm) {
+   "use strict";
+   _elm.Demo = _elm.Demo || {};
+   if (_elm.Demo.values)
+   return _elm.Demo.values;
+   var _op = {},
+   _N = Elm.Native,
+   _U = _N.Utils.make(_elm),
+   _L = _N.List.make(_elm),
+   $moduleName = "Demo",
+   $Basics = Elm.Basics.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $StartApp$Simple = Elm.StartApp.Simple.make(_elm);
+   var Decrement = {ctor: "Decrement"};
+   var Increment = {ctor: "Increment"};
+   var pageImages = A2($List.map,
+   function (x) {
+      return A2($Html.img,
+      _L.fromArray([$Html$Attributes.src(A2($Basics._op["++"],
+      "p-",
+      A2($Basics._op["++"],
+      $Basics.toString(x),
+      ".jpg")))]),
+      _L.fromArray([]));
+   },
+   _L.range(0,12));
+   var pageCount = $List.length(pageImages);
+   var update = F2(function (action,
+   model) {
+      return function () {
+         switch (action.ctor)
+         {case "Decrement":
+            return A2($Basics.max,
+              0,
+              model - 1);
+            case "Increment":
+            return A2($Basics.min,
+              pageCount - 1,
+              model + 1);}
+         _U.badCase($moduleName,
+         "between lines 38 and 40");
+      }();
+   });
+   var view = F2(function (address,
+   model) {
+      return A2($Html.div,
+      _L.fromArray([]),
+      _L.fromArray([A2($Html.button,
+                   _L.fromArray([A2($Html$Events.onClick,
+                                address,
+                                Decrement)
+                                ,$Html$Attributes.$class("btn btn-danger")]),
+                   _L.fromArray([$Html.text("Prev")]))
+                   ,A2($Html.button,
+                   _L.fromArray([A2($Html$Events.onClick,
+                                address,
+                                Increment)
+                                ,$Html$Attributes.$class("btn btn-primary")]),
+                   _L.fromArray([$Html.text("Next")]))
+                   ,$Html.text($Basics.toString(model))
+                   ,A2($Html.div,
+                   _L.fromArray([]),
+                   _L.fromArray([A2($Maybe.withDefault,
+                   $Html.text("hello"),
+                   $List.head(A2($List.drop,
+                   model,
+                   pageImages)))]))]));
+   });
+   var model = 0;
+   var main = $StartApp$Simple.start({_: {}
+                                     ,model: model
+                                     ,update: update
+                                     ,view: view});
+   _elm.Demo.values = {_op: _op
+                      ,main: main
+                      ,model: model
+                      ,pageImages: pageImages
+                      ,pageCount: pageCount
+                      ,view: view
+                      ,Increment: Increment
+                      ,Decrement: Decrement
+                      ,update: update};
+   return _elm.Demo.values;
+};
 Elm.Dict = Elm.Dict || {};
 Elm.Dict.make = function (_elm) {
    "use strict";
@@ -4153,97 +4244,6 @@ Elm.List.make = function (_elm) {
                       ,sortBy: sortBy
                       ,sortWith: sortWith};
    return _elm.List.values;
-};
-Elm.Main = Elm.Main || {};
-Elm.Main.make = function (_elm) {
-   "use strict";
-   _elm.Main = _elm.Main || {};
-   if (_elm.Main.values)
-   return _elm.Main.values;
-   var _op = {},
-   _N = Elm.Native,
-   _U = _N.Utils.make(_elm),
-   _L = _N.List.make(_elm),
-   $moduleName = "Main",
-   $Basics = Elm.Basics.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $Html$Events = Elm.Html.Events.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $StartApp$Simple = Elm.StartApp.Simple.make(_elm);
-   var Decrement = {ctor: "Decrement"};
-   var Increment = {ctor: "Increment"};
-   var pageImages = A2($List.map,
-   function (x) {
-      return A2($Html.img,
-      _L.fromArray([$Html$Attributes.src(A2($Basics._op["++"],
-      "p-",
-      A2($Basics._op["++"],
-      $Basics.toString(x),
-      ".jpg")))]),
-      _L.fromArray([]));
-   },
-   _L.range(0,12));
-   var pageCount = $List.length(pageImages);
-   var update = F2(function (action,
-   model) {
-      return function () {
-         switch (action.ctor)
-         {case "Decrement":
-            return A2($Basics.max,
-              0,
-              model - 1);
-            case "Increment":
-            return A2($Basics.min,
-              pageCount - 1,
-              model + 1);}
-         _U.badCase($moduleName,
-         "between lines 36 and 38");
-      }();
-   });
-   var view = F2(function (address,
-   model) {
-      return A2($Html.div,
-      _L.fromArray([]),
-      _L.fromArray([A2($Html.button,
-                   _L.fromArray([A2($Html$Events.onClick,
-                                address,
-                                Decrement)
-                                ,$Html$Attributes.$class("btn btn-primary")]),
-                   _L.fromArray([$Html.text("Prev")]))
-                   ,A2($Html.button,
-                   _L.fromArray([A2($Html$Events.onClick,
-                                address,
-                                Increment)
-                                ,$Html$Attributes.$class("btn btn-primary")]),
-                   _L.fromArray([$Html.text("Next")]))
-                   ,$Html.text($Basics.toString(model))
-                   ,A2($Html.div,
-                   _L.fromArray([]),
-                   _L.fromArray([A2($Maybe.withDefault,
-                   $Html.text("hello"),
-                   $List.head(A2($List.drop,
-                   model,
-                   pageImages)))]))]));
-   });
-   var model = 0;
-   var main = $StartApp$Simple.start({_: {}
-                                     ,model: model
-                                     ,update: update
-                                     ,view: view});
-   _elm.Main.values = {_op: _op
-                      ,main: main
-                      ,model: model
-                      ,pageImages: pageImages
-                      ,pageCount: pageCount
-                      ,view: view
-                      ,Increment: Increment
-                      ,Decrement: Decrement
-                      ,update: update};
-   return _elm.Main.values;
 };
 Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
